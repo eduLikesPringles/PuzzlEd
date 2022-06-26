@@ -28,9 +28,14 @@ class Paddle:
         self.width = width
         self.height = height
 
-    def draw(self, win):
-        pygame.draw.rect(
-            win, self.COLOR, (self.x, self.y, self.width, self.height))
+    def draw(self, win, shape): # I think win stands for "window", the surface that we will draw on top of
+        if shape == "square":
+            pygame.draw.rect(
+                win, self.COLOR, (self.x, self.y, self.width, self.height))
+        if shape == "circle":
+            # HOW TO USE: circle(surface, color, center, radius) -> Rect
+            pygame.draw.circle(
+                win, self.COLOR, (self.x, self.y), 20)
 
     def move(self, direction):
         if direction == "up":
@@ -82,7 +87,7 @@ def draw(win, paddles, ball, left_score, right_score):
                                 right_score_text.get_width()//2, 20))
 
     for paddle in paddles:
-        paddle.draw(win)
+        paddle.draw(win, shape = "square")
 
     for i in range(10, HEIGHT, HEIGHT//20):
         if i % 2 == 1:
@@ -126,6 +131,7 @@ def main():
     run = True
     clock = pygame.time.Clock()
 
+    # REMINDER: Edu has (self, x, y, width, height)
     Edu = Paddle(10, HEIGHT//2 - PADDLE_HEIGHT //
                          2, PADDLE_WIDTH, PADDLE_HEIGHT)
     ball = Ball(WIDTH // 2, HEIGHT // 2, BALL_RADIUS)
