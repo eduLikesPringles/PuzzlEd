@@ -14,6 +14,7 @@ class Ed:
 
     # we always start drawing a circle
     def __init__(self, shape, x, y, size):
+        self.shape = shape
         self.x =  x
         self.y = y
         self.size = size
@@ -23,8 +24,12 @@ class Ed:
         pass
 
     def draw(self, win):
-        pygame.draw.circle(
-            screen, self.COLOR, (self.x, self.y), self.size)
+        if self.shape == 'circle':
+            pygame.draw.circle(
+                screen, self.COLOR, (self.x, self.y), self.size)
+        elif self.shape == 'square':
+            pygame.draw.rect(
+                screen, self.COLOR, (self.x, self.y, self.size, self.size))
 
     def move(self, up=True):
         if up:
@@ -48,8 +53,10 @@ while True:
 
     # draw all our elements
 
-    Edu = Ed('circle', 100, 100, 10)
-    Edu.draw(screen)
+    Edu1 = Ed('circle', 100, 100, 10)
+    Edu1.draw(screen)
+    Edu2 = Ed('square', 400, 400, 10)
+    Edu2.draw(screen)
 
     # update everything
 
