@@ -7,8 +7,8 @@ pygame.display.set_caption('PuzzlEd')
 clock = pygame.time.Clock()
 
 test_surface = pygame.Surface((200, 200))
-test_surface.fill('Red')
-# pygame.draw.polygon()
+# test_surface.fill('Red')
+pygame.draw.polygon(test_surface, 'Red', [(100, 100), (100, 200), (200, 200)])
 
 while True:
     for event in pygame.event.get():
