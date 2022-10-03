@@ -13,14 +13,18 @@ class Ed:
     VEL = 4
 
     # we always start drawing a circle
-    def __init__(self, x, y, radius):
+    def __init__(self, shape, x, y, size):
         self.x =  x
         self.y = y
-        self.radius = radius
+        self.size = size
+        # the size is the Area in units of px**2
+
+    def reshape(self):
+        pass
 
     def draw(self, win):
         pygame.draw.circle(
-            screen, self.COLOR, (self.x, self.y), self.radius)
+            screen, self.COLOR, (self.x, self.y), self.size)
 
     def move(self, up=True):
         if up:
@@ -44,7 +48,7 @@ while True:
 
     # draw all our elements
 
-    Edu = Ed(100, 100, 10)
+    Edu = Ed('circle', 100, 100, 10)
     Edu.draw(screen)
 
     # update everything
