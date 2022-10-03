@@ -1,5 +1,6 @@
 import pygame
 from sys import exit
+import math
 
 pygame.init()
 screen = pygame.display.set_mode((1500,750))
@@ -26,10 +27,10 @@ class Ed:
     def draw(self, win):
         if self.shape == 'circle':
             pygame.draw.circle(
-                screen, self.COLOR, (self.x, self.y), self.size)
+                screen, self.COLOR, (self.x, self.y), math.sqrt(self.size/math.pi))
         elif self.shape == 'square':
             pygame.draw.rect(
-                screen, self.COLOR, (self.x, self.y, self.size, self.size))
+                screen, self.COLOR, (self.x - math.sqrt(self.size) / 2, self.y - math.sqrt(self.size) / 2, math.sqrt(self.size), math.sqrt(self.size)))
 
     def move(self, up=True):
         if up:
@@ -53,9 +54,9 @@ while True:
 
     # draw all our elements
 
-    Edu1 = Ed('circle', 100, 100, 10)
+    Edu1 = Ed('circle', 100, 100, 1000)
     Edu1.draw(screen)
-    Edu2 = Ed('square', 400, 400, 10)
+    Edu2 = Ed('square', 100, 100, 1000)
     Edu2.draw(screen)
 
     # update everything
