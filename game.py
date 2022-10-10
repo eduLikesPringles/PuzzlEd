@@ -30,7 +30,10 @@ class Ed:
                 screen, self.COLOR, (self.x, self.y), math.sqrt(self.size/math.pi))
         elif self.shape == 'square':
             pygame.draw.rect(
-                screen, self.COLOR, (self.x - math.sqrt(self.size) / 2, self.y - math.sqrt(self.size) / 2, math.sqrt(self.size), math.sqrt(self.size)))
+                screen, 'Blue', (self.x - math.sqrt(self.size) / 2, self.y - math.sqrt(self.size) / 2, math.sqrt(self.size), math.sqrt(self.size)))
+        elif self.shape == 'triangle':
+            pygame.draw.polygon(
+                screen, 'Red', [(self.x, self.y - math.sqrt(2 * math.sqrt(3) / 9 * self.size)), (self.x - 0.9 * (math.sqrt(self.size / math.sqrt(3))), (self.y + 0.9 * (math.sqrt(2 * math.sqrt(3) / 9 * self.size)))), (self.x + 0.9 * (math.sqrt(self.size / math.sqrt(3))), (self.y + 0.9 * (math.sqrt(2 * math.sqrt(3) / 9 * self.size))))])
 
     def move(self, up=True):
         if up:
@@ -42,10 +45,6 @@ class Ed:
         self.x = self.original_x
         self.y = self.original_y
 
-test_surface = pygame.Surface((200, 200))
-# test_surface.fill('Red')
-pygame.draw.polygon(test_surface, 'Red', [(100, 100), (100, 200), (200, 200)])
-
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -54,14 +53,18 @@ while True:
 
     # draw all our elements
 
-    Edu1 = Ed('circle', 100, 100, 1000)
+    Edu1 = Ed('circle', 100, 100, 10000)
     Edu1.draw(screen)
-    Edu2 = Ed('square', 100, 100, 1000)
+    Edu3 = Ed('triangle', 500, 100, 10000)
+    Edu3.draw(screen)
+    Edu2 = Ed('square', 900, 100, 10000)
     Edu2.draw(screen)
+
+    
 
     # update everything
 
-    screen.blit(test_surface,(200, 200))
+    screen.blit(screen,(200, 200))
 
     pygame.display.update()
     clock.tick(60)
