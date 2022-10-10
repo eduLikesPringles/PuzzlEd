@@ -1,2 +1,2 @@
-- apply movement
-- apply the reshape method
+- corregir reshape para que sea continuo while pressing
+- hacer movemet más fluido
