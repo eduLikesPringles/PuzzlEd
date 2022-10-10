@@ -9,10 +9,11 @@ pygame.display.set_caption('PuzzlEd')
 clock = pygame.time.Clock()
 
 WHITE = (255, 255, 255)
+VEL = 10
+SIZE = 1000
 
 class Ed:
     COLOR = WHITE
-    VEL = 4
 
     # we always start drawing a circle
     def __init__(self, shape, x, y, size):
@@ -55,11 +56,11 @@ class Ed:
         self.x = self.original_x
         self.y = self.original_y
 
-Edu1 = Ed('circle', 100, 100, 10000)
+Edu1 = Ed('circle', 100, 100, 1000)
 Edu1.draw(screen)
-Edu3 = Ed('triangle', 500, 100, 10000)
+Edu3 = Ed('triangle', 500, 100, 1000)
 Edu3.draw(screen)
-Edu2 = Ed('square', 900, 100, 10000)
+Edu2 = Ed('square', 900, 100, 1000)
 Edu2.draw(screen)
 
 while True:
@@ -77,13 +78,13 @@ while True:
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_a]:
-        Edu1.x -= 10
+        Edu1.x -= VEL
     if keys[pygame.K_d]:
-        Edu1.x += 10
+        Edu1.x += VEL
     if keys[pygame.K_w]:
-        Edu1.y -= 10
+        Edu1.y -= VEL
     if keys[pygame.K_s]:
-        Edu1.y += 10
+        Edu1.y += VEL
     if keys[pygame.K_SPACE]:
         Edu1.recolor()
     if keys[pygame.K_LCTRL]:
@@ -101,4 +102,4 @@ while True:
     screen.fill((0,0,0))
     Edu1.draw(screen)
     pygame.display.update()
-    clock.tick(60)
+    clock.tick(120)
