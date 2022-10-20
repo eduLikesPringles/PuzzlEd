@@ -1,2 +1,8 @@
+# TODO:
+- enemies que te sigan pero yendo más lento
+    - primero uno
+    - luego array
+
+# BUG FIXES:
 - corregir reshape para que sea continuo while pressing
 - hacer movemet más fluido
